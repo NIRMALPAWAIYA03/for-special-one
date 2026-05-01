@@ -30,8 +30,7 @@ applyMusicState();
 //  ✍️ TYPEWRITER GREETING (Updated with your long text)
 // ══════════════════════════════
 const greetingText = `Happy 22nd birthday Tishu 💕,
-
-In life you are my once-in-a-lifetime soul.... (I always feel it all the same. You were not just a best friend to me you are home, my heart, my calm in chaos forever fav person . wishing your all dreams will come true having a bright furure always grow with good health and had made free of all the problems that make you suffer. Even from distance, I'm silently celebrating you, like I always will.
+ ("In life you are my once-in-a-lifetime soul.... (I always feel it all the same. You were not just a best friend to me you are home, my heart, my calm in chaos forever fav person . wishing your all dreams will come true having a bright furure always grow with good health and had made free of all the problems that make you suffer. Even from distance, I'm silently celebrating you, like I always will.
 
 I miss your voice, your laugh, the way we just understood and make stand for each other. If I could have one wish today-it wouldn't be for me that as I always failed to make your heart happy, your soul is at peace, you deserves all the happiness ,till don't coming to you not because I never able to stop caring , but because felt I cared too much  that makes you face any problems.i'm allways there for you  ,
  
