@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Beautiful Memories ✨</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>💖</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,
+                    #ffd1dc 0%,
+                    #e6e6fa 25%,
+                    #ffefd5 50%,
+                    #e6e6fa 75%,
+                    #ffd1dc 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            color: #4a4a4a;
+        }
+
+        @keyframes gradientFlow {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Sparkle Effect */
+        .magic-sparkles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background-color: white;
+            animation: twinkle var(--duration, 4s) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50%       { opacity: 0.8; transform: scale(1); }
+        }
+
+        .magic-sparkles::before,
+        .magic-sparkles::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: sparkleLayer 8s linear infinite;
+            opacity: 0.5;
+        }
+        .magic-sparkles::after {
+            animation-delay: -4s;
+            transform: rotate(45deg);
+        }
+        @keyframes sparkleLayer {
+            0%   { transform: translateY(0); }
+            100% { transform: translateY(-50px); }
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 105, 180, 0.6);
+            animation: floatHeart var(--float-duration, 6s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+        @keyframes floatHeart {
+            0%   { transform: translate(0, 100vh) rotate(0deg); }
+            100% { transform: translate(var(--translate-x, 0), -100vh) rotate(360deg); }
+        }
+
+        /* Welcome */
+        .welcome {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 3;
+        }
+        .welcome h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInScale 2s ease;
+        }
+        .welcome p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            line-height: 1.6;
+            animation: fadeIn 2s ease 0.5s both;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px;
+            position: relative;
+            z-index: 3;
+        }
+        .story {
+            min-width: 200px;
+            height: 300px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .story img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .story p {
+            position: absolute;
+            bottom: 10px; left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        /* ❤️ Cursor Heart Style */
+.cursor-heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 18px;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: transform 0.8s ease-out, opacity 1s ease-out;
+    z-index: 9999;
+}
+
+  .parallax {
+    height: 400px; /* Ya jo bhi aapne set kiya hai */
+    background-image: url('img/d1.jpg');
+    background-size: cover; 
+    background-position: center 0px; /* Initial position set karein */
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 3;
+    /* Isse image scroll ke baad "jump" nahi karegi */
+    transition: background-position 0.05s ease-out; 
+}
+
+@media (max-width: 768px) {
+    .parallax {
+        background-attachment: scroll !important;
+        background-position: center center !important; /* Mobile par parallax band */
+    }
+}
+        /* Memory Cards */
+        .memory-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            z-index: 3;
+            position: relative;
+        }
+        .memory-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+        .memory-card:hover::before { transform: translateX(100%); }
+
+        .memory-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+        .memory-card:hover .memory-img { transform: scale(1.05); }
+        .memory-date {
+            font-family: 'Dancing Script', cursive;
+            color: #ff69b4;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .memory-caption { font-size: 1rem; line-height: 1.5; color: #666; }
+
+        /* Final Message */
+        .final-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 3rem;
+            position: relative;
+            z-index: 3;
+        }
+        .final-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 2rem;
+            animation: heartbeat 2s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50%       { transform: scale(1.1); }
+        }
+        .final-message p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+        .goodbye-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255,105,180,0.4);
+            animation: floatBtn 3s infinite ease-in-out;
+        }
+        .goodbye-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255,105,180,0.6);
+        }
+        @keyframes floatBtn {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInScale {
+            0%   { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            0%   { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.4); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .welcome h1 { font-size: 2.5rem; }
+            .memory-container { grid-template-columns: 1fr; }
+            .final-message h2 { font-size: 2.5rem; }
+        }
+
+        /* ❤️ Cursor Heart */
+        .cursor-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 18px;
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            transition: transform 0.8s ease-out, opacity 1s ease-out;
+            z-index: 9999;
+            text-shadow: 0 0 8px rgba(255,105,180,0.8);
+        }
+
+       
+        /* 🔍 POPUP BACKGROUND */
+.image-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0,0,0,0.92);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 99999;
+
+    /* ✅ These 3 lines fix the scroll displacement permanently */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: opacity;
+}
+
+/* ACTIVE */
+.image-popup.active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+/* IMAGE */
+.image-popup img {
+    max-width: 90%;  /* Mobile screen ke andar rahega */
+    max-height: 80vh;
+    width: auto;
+    height: auto;    /* Aspect ratio maintain rahega */
+    border-radius: 15px;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+
+/* ZOOM EFFECT */
+.image-popup.active img {
+    transform: scale(1) translateZ(0);
+}
+
+/* ✅ Lock page scroll when popup is open */
+body.popup-open {
+    overflow: hidden;
+   
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- 🎵 MUSIC -->
+   
+    <audio id="bg-music" loop>
+        <source src="audio/birthday.mp3" type="audio/mpeg">
+    </audio>
+
+
+    
+    <div id="imagePopup" class="image-popup">
+        <span id="popupClose">✕</span>
+        <img id="popupImg" src="" alt="Memory">
+    </div>
+
+    <div class="parallax"></div>
+    <div class="magic-sparkles"></div>
+
+    <div class="floating-hearts">
+        <div class="heart" style="--float-duration:6s;--delay:0s;--translate-x:20px;left:10%">💝</div>
+        <div class="heart" style="--float-duration:8s;--delay:1s;--translate-x:-30px;left:25%">💖</div>
+        <div class="heart" style="--float-duration:7s;--delay:2s;--translate-x:40px;left:50%">💗</div>
+        <div class="heart" style="--float-duration:9s;--delay:3s;--translate-x:-20px;left:70%">💓</div>
+        <div class="heart" style="--float-duration:5s;--delay:4s;--translate-x:30px;left:85%">💕</div>
+    </div>
+
+    <section class="welcome">
+        <h1>uhh Beautiful </h1>
+        <p>Every moment spent with you has been magical. ...</p>
+    </section>
+
+    <div class="timeline">
+        <div class="story"><img src="img/d9.jpg"><p>💖U</p></div>
+        <div class="story"><img src="img/img19.jpg"><p>💖ARE</p></div>
+        <div class="story"><img src="img/d2.jpg"><p>💖ALWAYS</p></div>
+        <div class="story"><img src="img/d17.jpg"><p>💖HOLDING</p></div>
+        <div class="story"><img src="img/d6.jpg"><p>💖EVERY</p></div>
+        <div class="story"><img src="img/d4.jpg"><p> 💖BEUTIFULL MOMENT</p></div>
+        <div class="story"><img src="img/d5.jpg"><p>💖WITH YOU</p></div>
+    </div>
+
+    <div class="memory-container">
+        <div class="memory-card">
+            <img src="img/d18.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">purely devine</div>
+            <div class="memory-caption"></div>You're truly one of the amazing girl, always feel
+                glad that we mate and having someone really special like you in my life♾️.
+        </div>
+        <div class="memory-card">
+            <img src="img/d16.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">Her Smile Says It All </div>
+            <div class="memory-caption">May your world ahead be filled with happiness, success, and endless smiles.💕</div>
+        </div>
+        <div class="memory-card">
+            <img src="img/d15.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">good vibes in every moment</div>
+            <div class="memory-caption">"You are poetry in motion, a perfect mix of strength and a gentle heart."🌸💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="img/d10.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">invaluable</div>
+            <div class="memory-caption">Not even the most expensive gifts compare to the joy you bring.🌸💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="img/d3.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">better with you </div>
+            <div class="memory-caption">Keep being the amazing person you are—you make every moment brighter.🌸💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="img/d13.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">cherished</div>
+            <div class="memory-caption">"Your heart is pure gold, and being near you is my favorite place to be".🌸💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="img/d9.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">Pretty Soul</div>
+            <div class="memory-caption">The most expensive cameras were even not able to capture you worth and beuty the way my eyes do.🌸💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="img/d14.jpg" alt="Memory" class="memory-img">
+            <div class="memory-date">graceful </div>
+            <div class="memory-caption">I was just thinking about how your gentle grace makes everything around you feel a little softer.🌸💖</div>
+        </div>
+    </div>
+
+    <section class="final-message">
+        <h2>Thank You for everything</h2>
+        <p>Every laugh, every talk, and every moment we've shared has been truly special.💫for me<br>
+            I'm so grateful for the real emotional bond we have together, and for the positivity you always bring into my life.<br>
+            On your birthday, I just wish for endless happiness, love, and success to come your way.🌸</p>
+        <p>You deserve all the joy in the world—keep shining and spreading your beautiful energy.✨</p>
+        <a href="index.html" class="goodbye-btn" id="backHomeBtn">Back to Home 🏠</a>
+    </section>
+
+<script>
+window.addEventListener("scroll", () => {
+    const parallax = document.querySelector(".parallax");
+    if (!parallax || window.innerWidth <= 768) return;
+
+    let offset = window.pageYOffset; // Ya window.scrollY
+
+    // FIX: Jab user page ke ekdum upar (0) ho, toh position hamesha center (0px) rakhein
+    if (offset <= 10) {
+        parallax.style.backgroundPositionY = "0px";
+    } else {
+        // Sirf tabhi move karein jab niche scroll ho
+        parallax.style.backgroundPositionY = (offset * 0.4) + "px";
+    }
+});
+
+// ══ IMAGE POPUP ══
+const popup      = document.getElementById("imagePopup");
+const popupImg   = document.getElementById("popupImg");
+const popupClose = document.getElementById("popupClose");
+
+let scrollPosition = 0;  // ← saves scroll position before popup opens
+
+function openPopup(src) {
+    scrollPosition = window.pageYOffset;  // ← save current scroll
+    popupImg.src = src;
+    popup.classList.add("active");
+    document.body.classList.add("popup-open");
+}
+
+function closePopup() {
+    popup.classList.remove("active");
+    document.body.classList.remove("popup-open");
+    window.scrollTo(0, scrollPosition);   // ← restore exact scroll position
+    setTimeout(() => { popupImg.src = ""; }, 400);
+}
+
+document.querySelectorAll(".memory-card").forEach(card => {
+    card.addEventListener("click", function () {
+        const img = this.querySelector("img");
+        if (!img) return;
+        openPopup(img.src);
+    });
+});
+
+popupClose.addEventListener("click", closePopup);
+
+popup.addEventListener("click", (e) => {
+    if (e.target === popup) closePopup();
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePopup();
+
+});
+// ❤️ CURSOR HEART TRAIL
+let lastTime = 0;
+
+document.addEventListener("mousemove", function (e) {
+    const now = Date.now();
+    if (now - lastTime < 80) return; // Performance check
+    lastTime = now;
+
+    const heart = document.createElement("div");
+    heart.className = "cursor-heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.style.opacity = "0";
+        heart.style.transform = `translate(-50%, -${60 + Math.random() * 20}%) scale(1.2)`;
+    }, 50);
+
+    setTimeout(() => heart.remove(), 1000);
+});
+// 🎵 BACKGROUND MUSIC
+const bgMusic = document.getElementById('bg-music');
+
+function applyMusicState() {
+    bgMusic.volume = 0.4;
+    bgMusic.play().catch(() => {});
+}
+
+// Resume from saved time
+bgMusic.currentTime = parseFloat(sessionStorage.getItem('musicTime') || '0');
+
+// Save time before leaving — but if going back home, set restart flag
+window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('musicTime', bgMusic.currentTime);
+});
+
+// Back Home button: set restart flag so home.html starts music from beginning
+document.getElementById('backHomeBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    sessionStorage.setItem('musicRestart', 'true');
+    sessionStorage.removeItem('musicTime');
+    window.location.href = 'index.html';
+});
+
+document.addEventListener('click', function startOnce() {
+    applyMusicState();
+    document.removeEventListener('click', startOnce);
+}, { once: true });
+
+applyMusicState();
+</script>
+</body>
+</html>
