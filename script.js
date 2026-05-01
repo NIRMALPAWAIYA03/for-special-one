@@ -30,17 +30,19 @@ applyMusicState();
 //  ✍️ TYPEWRITER GREETING (Updated with your long text)
 // ══════════════════════════════
 const greetingText = `Happy 22nd birthday Tishu 💕,
- ("In life you are my once-in-a-lifetime soul.... (I always feel it all the same. You were not just a best friend to me you are home, my heart, my calm in chaos forever fav person . wishing your all dreams will come true having a bright furure always grow with good health and had made free of all the problems that make you suffer. Even from distance, I'm silently celebrating you, like I always will.
+ (The day that my soul always excited for'' today is your special day and i want to say you how much you mean to me and always hold the special place in my heart that cares for you. I wish you all the happiness in the world, not just today but every day of your life. 
 
-I miss your voice, your laugh, the way we just understood and make stand for each other. If I could have one wish today-it wouldn't be for me that as I always failed to make your heart happy, your soul is at peace, you deserves all the happiness ,till don't coming to you not because I never able to stop caring , but because felt I cared too much  that makes you face any problems.i'm allways there for you  ,
- 
-But silence hasn't quieted the pain that lasts for a long time and distance hasn't dimmed the love.l wanted you to be free from the weight you are carrying.
+May God grant you health, career growth, and the power to stay strong against any problem. i know you understands i dont use to say much but feels everyhting around too deeply .wish your heart becomes so full of happiness that it heals all the parts of you that once felt hurt you are a true warrior. Never forget how much energy you hold within you; no problem is too big and no dream is too far away.
 
-and also the truth is... I still care, I still miss you every minute , and I still believe that what
+I am so thankful for you—thank you for coming into my life. Thank you for making me smile, for understanding me, and for standing by my side in every situation. You were there at my worst, even when I was unable to handle myself idont trust anyone easily but i always trust you close eyed . I am truly thankful that the universe sent you and that I found you. Even the smallest moments spent with you are the best moments of my entire life.
 
-we shared was real. No matter where will life takes us, you'll always be my forever person. Happy birthday
+You are the beautiful soul Ill never get tired of falling for, over and over again. You are not just a best friend; you are home to my soul. Regardless of any labels, you have always had my heart. You are a once-in-a-lifetime soul, and you will always be my forever person.
 
-Always here, always wishing the best for you.")`;
+Sometimes life brings challenges, but I wish for you to stay strong and resilient . If I could, I would absorb all your pain and return it to you as love. For as long as I am here, you are never alone. I am always there for you, always stay together  no matter how hard situation will go  where life takes us. Even if the world doesn't clap for you, I always will. 
+
+With all my devotion and with my whole heart—past, present, and future—I am always grateful for you. I choose you and i'll choose you over and over again, without pause, without doubt, and in every heartbeat. I'll always keep choosing you.
+
+Happy Birthday... I am always here, always wishing the best for you.)`;
 
 const greetingElement = document.querySelector('.greeting');
 let charIndex = 0;
